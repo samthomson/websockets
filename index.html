@@ -8,10 +8,14 @@
     
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        var socket = io();
         function click() {
-            var socket = io();
             socket.emit('chat message', Math.random(100));
         }
+
+        socket.on('server.emitting', function(msg) {
+            console.log('got message from server: ', msg)
+        });
     </script>
   </body>
 </html>
